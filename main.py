@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 from metodos.descricao import Descricao
-from metodos.avaliação import NovaAvaliacao
+from metodos.avaliação import Avaliacao
 
 app = FastAPI()
 
 jogos = []
+avaliacoes=[]
 
 @app.post("/adicionar/jogo")
 def adicionar_jogo(jogo: Descricao):
@@ -17,13 +18,30 @@ def adicionar_jogo(jogo: Descricao):
 
 @app.get("/jogos")
 def listar_jogos():
+    lista_jogos_com_avaliacao=[]
+
     if not jogos:
         return {"mensagem": "Não há nenhum jogo em nossa lista!"}
-    else: 
-        return {"jogos": jogos}
+    
+    for jogo_existente in jogos:
+        jogo_avaliacoes=[]
+        for avaliacao in avaliacoes:
+            if avaliacao.nome_jogo == jogo_existente.nome:
+                jogo_avaliacoes.append(avaliacao)
+
+        lista_jogos_com_avaliacao.append({
+            "jogo": jogo_existente,
+            "avaliacoes": jogo_avaliacoes
+        })
+
+    return {"jogos": lista_jogos_com_avaliacao}
     
 @app.post("/adicionar/avaliacao")
-def adicionar_avaliacao(avaliacao: NovaAvaliacao):
+def adicionar_avaliacao(avaliacao: Avaliacao):
     for jogo_existente in jogos:
-        if jogo_existente.nome == avaliacao.nome:
-            pass
+        if jogo_existente.nome == avaliacao.nome_jogo:
+            avaliacoes.append(avaliacao)
+            return {"avaliações": avaliacao}
+    
+    return{"mensagem": "Esse jogo não existe em nosso site! Adicione-o para avaliá-lo!"}
+    adicionar_jogo()
