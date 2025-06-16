@@ -1,0 +1,40 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment
+venv/
+.venv/
+
+# IDE and editor files
+.vscode/        # VS Code specific files
+.idea/          # PyCharm/IntelliJ IDEA specific files
+*.swp           # Vim swap files
+*~              # Emacs backup files
+
+# Operating System files
+.DS_Store       # macOS specific
+Thumbs.db       # Windows specific
+
+# Logs and databases
+*.log
+*.db
+db.sqlite3      # Common Django database file
+
+# Dependency management (pip)
+# requirements.txt should NOT be ignored as it defines dependencies
+# but other generated dependency files might be
+pip-log.txt
+
+# Distribute / Build files
+dist/
+build/
+*.egg
+.eggs/
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
