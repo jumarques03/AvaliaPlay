@@ -19,7 +19,7 @@ Simples, direto e perfeito para entusiastas de jogos.
 ## ⚙️ Tecnologias Utilizadas
 
 - Python
-- Flask
+- FastAPI
 
 ---
 
