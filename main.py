@@ -25,17 +25,28 @@ def listar_jogos():
     
     for jogo_existente in jogos:
         jogo_avaliacoes=[]
+        soma_avaliacoes = 0
+        total_avaliacoes = 0
+
         for avaliacao in avaliacoes:
             if avaliacao.nome_jogo == jogo_existente.nome:
                 jogo_avaliacoes.append(avaliacao)
+                soma_avaliacoes += avaliacao.nota
+                total_avaliacoes += 1
+        
+        if total_avaliacoes > 0:
+            media_avaliacoes = soma_avaliacoes / total_avaliacoes
+        else:
+            media_avaliacoes = None
 
         lista_jogos_com_avaliacao.append({
             "jogo": jogo_existente,
-            "avaliacoes": jogo_avaliacoes
+            "avaliacoes": jogo_avaliacoes,
+            "media_avaliacoes": media_avaliacoes
         })
 
     return {"jogos": lista_jogos_com_avaliacao}
-    
+
 @app.post("/adicionar/avaliacao")
 def adicionar_avaliacao(avaliacao: Avaliacao):
     for jogo_existente in jogos:
