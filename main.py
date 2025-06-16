@@ -1,12 +1,12 @@
 from fastapi import FastAPI
-from metodos.descricao import Descricao
+from metodos.avaliação import Avaliacao
 
 app = FastAPI()
 
 jogos = []
 
 @app.post("/adicionar/jogo")
-def adicionar_jogo(jogo: Descricao ):
+def adicionar_jogo(jogo: Avaliacao):
     jogos.append(jogo)
     return {"mensagem": "Jogo adicionado!", "jogo": jogo}
 
