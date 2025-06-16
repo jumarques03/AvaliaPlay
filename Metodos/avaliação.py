@@ -1,5 +1,11 @@
-from metodos.descricao import Descricao
+from pydantic import BaseModel
 
-class Avaliacao(Descricao):
+class Avaliacao(BaseModel):
     nota: int
-    motivo_da_nota: str
+    comentario: str
+
+class NovaAvaliacao(BaseModel):
+    nome: str
+    nota: int
+    cometario: str
+
