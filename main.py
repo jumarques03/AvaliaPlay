@@ -44,4 +44,3 @@ def adicionar_avaliacao(avaliacao: Avaliacao):
             return {"avaliações": avaliacao}
     
     return{"mensagem": "Esse jogo não existe em nosso site! Adicione-o para avaliá-lo!"}
-    adicionar_jogo()
