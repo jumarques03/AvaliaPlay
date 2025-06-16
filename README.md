@@ -51,7 +51,7 @@ pip install -r requirements.txt
 ### 4. Execute a aplicação
 
 ```bash
-python app.py
+uvicorn main:app --reload
 ```
 
 ### 5. Acesse no navegador
