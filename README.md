@@ -1,5 +1,7 @@
 # 🎮 AvaliaPlay
 
+**⚠️ Aviso:** Este projeto ainda está em construção! Algumas funcionalidades podem estar incompletas ou sujeitas a mudanças.
+
 **AvaliaPlay** é um site de **avaliação de jogos** onde qualquer pessoa pode adicionar novos jogos e atribuir uma nota sobre eles. É uma plataforma pensada para quem deseja compartilhar suas experiências e descobrir novos games através das opiniões da comunidade.
 
 ---
@@ -53,15 +55,6 @@ pip install -r requirements.txt
 ```bash
 uvicorn main:app --reload
 ```
-
-### 5. Acesse no navegador
-
-Abra o navegador e acesse:
-
-```
-http://localhost:5000
-```
-
 ---
 
 ## 🤝 Contribuindo
