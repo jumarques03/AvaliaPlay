@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from metodos.descricao import Descricao
 from metodos.avaliação import Avaliacao
+import json
 
 app = FastAPI()
 
@@ -16,6 +17,10 @@ def adicionar_jogo(jogo: Descricao):
     jogos.append(jogo)
     return {"mensagem": "Jogo adicionado!", "jogo": jogo}
 
+def salvar_lista_jogos(lista):
+    with open('jogos_salvos.json', 'w') as f:
+        json.dump(lista, f, indent=4) 
+
 @app.get("/jogos")
 def listar_jogos():
     lista_jogos_com_avaliacao=[]
@@ -30,7 +35,7 @@ def listar_jogos():
 
         for avaliacao in avaliacoes:
             if avaliacao.nome_jogo == jogo_existente.nome:
-                jogo_avaliacoes.append(avaliacao)
+                jogo_avaliacoes.append(avaliacao.dict())
                 soma_avaliacoes += avaliacao.nota
                 total_avaliacoes += 1
         
@@ -40,11 +45,12 @@ def listar_jogos():
             media_avaliacoes = None
 
         lista_jogos_com_avaliacao.append({
-            "jogo": jogo_existente,
+            "jogo": jogo_existente.dict(),
             "avaliacoes": jogo_avaliacoes,
             "media_avaliacoes": media_avaliacoes
         })
-
+        
+    salvar_lista_jogos(lista_jogos_com_avaliacao)
     return {"jogos": lista_jogos_com_avaliacao}
 
 @app.post("/adicionar/avaliacao")
