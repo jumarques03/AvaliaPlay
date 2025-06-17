@@ -2,8 +2,7 @@
 
 **⚠️ Aviso:** Este projeto ainda está em construção! Algumas funcionalidades podem estar incompletas ou sujeitas a mudanças.
 
-**AvaliaPlay** é um site de **avaliação de jogos** onde qualquer pessoa pode adicionar novos jogos e atribuir uma nota sobre eles. É uma plataforma pensada para quem deseja compartilhar suas experiências e descobrir novos games através das opiniões da comunidade.
-
+**AvaliaPlay** é um site de **avaliação de jogos** onde qualquer pessoa pode adicionar novos jogos e atribuir uma nota sobre eles.
 ---
 
 ## 📚 Sobre o Projeto
