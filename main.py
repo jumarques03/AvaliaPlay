@@ -1,13 +1,22 @@
+import json 
 from fastapi import FastAPI
 from metodos.descricao import Descricao
 from metodos.avaliação import Avaliacao
-import json
+from arquivos_json import jogos_salvos.json
 
 app = FastAPI()
 
 jogos = []
 avaliacoes=[]
 
+def salvar_lista_jogos(lista):
+    with open('jogos_salvos.json', 'w') as f:
+        json.dump(lista, f, indent=4) 
+
+def carregar_lista_jogos(arquivo):
+    with open('jogos_salvos.json', 'r') as f:
+        return json.load(f)
+    
 @app.post("/adicionar/jogo")
 def adicionar_jogo(jogo: Descricao):
     for jogo_existente in jogos:
@@ -17,12 +26,9 @@ def adicionar_jogo(jogo: Descricao):
     jogos.append(jogo)
     return {"mensagem": "Jogo adicionado!", "jogo": jogo}
 
-def salvar_lista_jogos(lista):
-    with open('jogos_salvos.json', 'w') as f:
-        json.dump(lista, f, indent=4) 
-
 @app.get("/jogos")
 def listar_jogos():
+    carregar_lista_jogos()
     lista_jogos_com_avaliacao=[]
 
     if not jogos:
@@ -49,7 +55,7 @@ def listar_jogos():
             "avaliacoes": jogo_avaliacoes,
             "media_avaliacoes": media_avaliacoes
         })
-        
+
     salvar_lista_jogos(lista_jogos_com_avaliacao)
     return {"jogos": lista_jogos_com_avaliacao}
 
