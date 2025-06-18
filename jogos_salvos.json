@@ -1,0 +1,17 @@
+[
+    {
+        "jogo": {
+            "nome": "Minecraft",
+            "categoria": "Sandbox",
+            "descricao": "dsada"
+        },
+        "avaliacoes": [
+            {
+                "nome_jogo": "Minecraft",
+                "nota": 10,
+                "comentario": "Amo esse jogo!"
+            }
+        ],
+        "media_avaliacoes": 10.0
+    }
+]
