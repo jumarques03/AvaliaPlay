@@ -19,7 +19,7 @@ def salvar_lista_jogos(lista):
         raise erro
     
 @app.post("/adicionar/jogo")
-def adicionar_jogo(jogo: Descricao):
+async def adicionar_jogo(jogo: Descricao):
     """
     Função que permite o usuário adicionar um jogo à lista de jogos.
     """
@@ -31,7 +31,7 @@ def adicionar_jogo(jogo: Descricao):
     return {"mensagem": "Jogo adicionado!", "jogo": jogo}
 
 @app.get("/jogos")
-def listar_jogos():
+async def listar_jogos():
     """
     Função que permite a listagem dos jogos e suas avaliações
     """
@@ -70,7 +70,7 @@ def listar_jogos():
         raise HTTPException(status_code=500, detail=f"Erro ao listar jogos: {str(e)}")
 
 @app.post("/adicionar/avaliacao")
-def adicionar_avaliacao(avaliacao: Avaliacao):
+async def adicionar_avaliacao(avaliacao: Avaliacao):
     """
     Função que permite o usuário adicionar uma avaliação à um jogo específico
     """
