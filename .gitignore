@@ -38,3 +38,5 @@ build/
 
 # Jupyter Notebook files
 .ipynb_checkpoints/
+
+.env
