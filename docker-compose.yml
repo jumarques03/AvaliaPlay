@@ -1,0 +1,8 @@
+services:
+  api:
+    build: .
+    container_name: avalia_play_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/api-avaliaplay
